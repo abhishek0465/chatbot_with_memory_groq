@@ -47,18 +47,18 @@ if groq_api_key:
         st.session_state.chat_history.append(AIMessage(content=result))
         return result
 
-    query = st.text_input("Ask Anything !!")
-    # st.chat_message('user').write(query)
+    # query = st.text_input("Ask Anything !!")
+    # # st.chat_message('user').write(query)
 
-    if st.button("Answer"):
-        if query := st.chat_input("Ask Anything !!"):
-            # 1. Render user message instantly
-            with st.chat_message("user"):
-                st.markdown(query)
-                
-            # 2. Process and render assistant response instantly
-            with st.chat_message("assistant"):
-                response = generate_response(query)
-                st.markdown(response)
+    # if st.button("Answer"):
+    if query := st.chat_input("Ask Anything !!"):
+        # 1. Render user message instantly
+        with st.chat_message("user"):
+            st.markdown(query)
+            
+        # 2. Process and render assistant response instantly
+        with st.chat_message("assistant"):
+            response = generate_response(query)
+            st.markdown(response)
 else:
     st.info("Provide Groq API Key.")
