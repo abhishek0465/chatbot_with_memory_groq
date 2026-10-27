@@ -9,7 +9,10 @@ from operator import itemgetter
 # load_dotenv(r'D:\Learning\TuteDude2026\Python\GenAI_Lectures_Apps\.env')
 
 st.sidebar.title("ChatBot With History and Memory Trimmeing")
-groq_api_key = st.sidebar.text_input("Provide your Groq API Key", type='password')
+try:
+    groq_api_key = st.secrets["GROQ_API_KEY"]
+except KeyError:
+    groq_api_key = None
 
 if 'chat_history' not in st.session_state or st.sidebar.button('Clear Chat History'):
     st.session_state.chat_history = [
