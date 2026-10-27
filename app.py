@@ -51,10 +51,14 @@ if groq_api_key:
     # st.chat_message('user').write(query)
 
     if st.button("Answer"):
-        if query:
-            response = generate_response(query)
-            st.write(response)
-        else:
-            st.warning("Please enter you query")
+        if query := st.chat_input("Ask Anything !!"):
+            # 1. Render user message instantly
+            with st.chat_message("user"):
+                st.markdown(query)
+                
+            # 2. Process and render assistant response instantly
+            with st.chat_message("assistant"):
+                response = generate_response(query)
+                st.markdown(response)
 else:
     st.info("Provide Groq API Key.")
