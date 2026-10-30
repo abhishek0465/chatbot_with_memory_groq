@@ -14,7 +14,8 @@ try:
 except KeyError:
     groq_api_key = None
 
-if 'chat_history' not in st.session_state or st.sidebar.button('Clear Chat History'):
+clear_history = st.sidebar.button('Clear Chat History')
+if 'chat_history' not in st.session_state or clear_history:
     st.session_state.chat_history = [
         AIMessage(content="Hello! How can I help you today?")
     ]
